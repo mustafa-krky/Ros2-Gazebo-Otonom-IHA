@@ -13,19 +13,22 @@ Tüm bağımlılıklar, derleme kütüphaneleri ve ROS 2 ortamı `docker/Dockerf
 
 ### 1. Depoyu Klonlayın
 ```bash
-git clone [https://github.com/KULLANICI_ADINIZ/gazebo-otonom-iha.git](https://github.com/KULLANICI_ADINIZ/gazebo-otonom-iha.git)
-cd gazebo-otonom-iha
+git clone https://github.com/mustafa-krky/Ros2-Gazebo-Otonom-IHA.git
+cd Ros2-Gazebo-Otonom-IHA
+```
 
 ### 2. Docker İmajını İnşa Edin
+```bash
 docker build -t iha_sim_env -f docker/Dockerfile .
+```
 
 ### 3. Konteyneri Başlatın (GUI Destekli)
-Gazebo ve rqt_image_view arayüzlerinin ekranınızda açılabilmesi için X11 yönlendirmesiyle konteyneri başlatın:
-
+Gazebo ve `rqt_image_view` arayüzlerinin ekranınızda açılabilmesi için X11 yönlendirmesiyle konteyneri başlatın:
+```bash
 xhost +local:root
 docker run -it --privileged \
   --env="DISPLAY=$DISPLAY" \
   --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
   --network host \
   iha_sim_env bash
-
+```
